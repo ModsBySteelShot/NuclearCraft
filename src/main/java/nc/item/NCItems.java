@@ -23,8 +23,6 @@ public class NCItems {
     public static Item toughAlloySword;
     public static Item toughAlloyPaxel;
     public static Item toughBow;
-    public static Item pistol;
-    public static Item dUBullet;
 
     public static Item dUPickaxe;
     public static Item dUShovel;

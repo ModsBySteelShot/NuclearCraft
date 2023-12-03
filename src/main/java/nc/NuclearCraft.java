@@ -83,14 +83,12 @@ import nc.block.reactor.BlockTubing2;
 import nc.block.storage.BlockLithiumIonBattery;
 import nc.block.storage.BlockVoltaicPile;
 import nc.entity.EntityAntimatterBombPrimed;
-import nc.entity.EntityBullet;
 import nc.entity.EntityEMPPrimed;
 import nc.entity.EntityNuclearGrenade;
 import nc.entity.EntityNukePrimed;
 import nc.gui.GuiHandler;
 import nc.handler.AnvilRepairHandler;
 import nc.handler.BlockDropHandler;
-import nc.handler.EntityDropHandler;
 import nc.handler.EntityHandler;
 import nc.handler.FuelHandler;
 import nc.item.ItemAntimatter;
@@ -101,7 +99,6 @@ import nc.item.ItemMaterial;
 import nc.item.ItemNC;
 import nc.item.ItemNuclearGrenade;
 import nc.item.ItemPart;
-import nc.item.ItemPistol;
 import nc.item.ItemToughBow;
 import nc.item.ItemUpgrade;
 import nc.item.NCAxe;
@@ -639,7 +636,6 @@ public class NuclearCraft {
     public static Achievement fusionReactorAchievement;
     public static Achievement factoryAchievement;
     public static Achievement separatorAchievement;
-    public static Achievement pistolAchievement;
     public static Achievement solarAchievement;
     public static Achievement oxidiserAchievement;
     public static Achievement synchrotronAchievement;
@@ -1964,10 +1960,6 @@ public class NuclearCraft {
                 "more damage and has a higher durability.",
                 "Can be repaired in an Anvil using Tough Alloy.").setMaxStackSize(1);
         GameRegistry.registerItem(NCItems.toughBow, "toughBow");
-        NCItems.pistol = new ItemPistol("pistol", "Uses DU bullets as ammunition.", "Deals a large amount of damage.");
-        GameRegistry.registerItem(NCItems.pistol, "pistol");
-        NCItems.dUBullet = new ItemNC("tools", "dUBullet", "Ammo for the Pistol.");
-        GameRegistry.registerItem(NCItems.dUBullet, "dUBullet");
 
         // Armor Registry
         NCItems.toughHelm = new ToughArmour(ToughArmorMaterial, toughHelmID, 0, "toughHelm");
@@ -2888,12 +2880,6 @@ public class NuclearCraft {
                                     Items.ender_eye}));
             GameRegistry.addRecipe(
                     new ShapedOreRecipe(
-                            NCItems.pistol,
-                            true,
-                            new Object[]{"AAA", "BBA", "CBA", 'A', "plateReinforced", 'B', "ingotTough", 'C',
-                                    "plateAdvanced"}));
-            GameRegistry.addRecipe(
-                    new ShapedOreRecipe(
                             new ItemStack(NCItems.parts, 2, 5),
                             true,
                             new Object[]{"ABA", "B B", "ABA", 'A', "universalReactant", 'B', "plateBasic"}));
@@ -2943,11 +2929,6 @@ public class NuclearCraft {
                             true,
                             new Object[]{"ABA", "BCB", "ABA", 'B', new ItemStack(NCItems.parts, 1, 15), 'C', "ingotTough",
                                     'A', new ItemStack(NCItems.parts, 1, 3)}));
-            GameRegistry.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(NCItems.dUBullet, 4),
-                            true,
-                            new Object[]{"ABC", 'A', "U238", 'B', Items.gunpowder, 'C', "ingotTough"}));
             GameRegistry.addRecipe(
                     new ShapelessOreRecipe(
                             new ItemStack(NCItems.fuel, 1, 46),
@@ -3134,7 +3115,6 @@ public class NuclearCraft {
         EntityHandler.registerEMP(EntityEMPPrimed.class, "EMPPrimed");
         EntityHandler.registerAntimatterBomb(EntityAntimatterBombPrimed.class, "AntimatterBombPrimed");
         EntityHandler.registerNuclearGrenade(EntityNuclearGrenade.class, "NuclearGrenade");
-        EntityHandler.registerEntityBullet(EntityBullet.class, "EntityBullet");
 
         // Fuel Handler
         GameRegistry.registerFuelHandler(new FuelHandler());
@@ -3143,20 +3123,9 @@ public class NuclearCraft {
         if (enableLoot) {
             ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.toughBow, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.dUBullet, 1), 6, 8, 4 * lootModifier));
-
-            ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.pistol, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.dUBullet, 1), 6, 8, 4 * lootModifier));
 
             ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.toughBow, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.pistol, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.dUBullet, 1), 6, 8, 5 * lootModifier));
 
             ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.toughHelm, 1), 1, 1, lootModifier));
@@ -3996,9 +3965,6 @@ public class NuclearCraft {
         // Extra Block Drops
         MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
 
-        // Extra Mob Drops
-        MinecraftForge.EVENT_BUS.register(new EntityDropHandler());
-
         // Anvil Recipes
         MinecraftForge.EVENT_BUS.register(new AnvilRepairHandler());
 
@@ -4029,7 +3995,6 @@ public class NuclearCraft {
         fusionReactorAchievement = a("fusionReactor", 4, 2, NCBlocks.fusionReactor, fissionControllerAchievement);
         separatorAchievement = a("separator", -2, 2, NCBlocks.separatorIdle, factoryAchievement);
         oxidiserAchievement = a("oxidiser", -4, 4, NCBlocks.oxidiserIdle, separatorAchievement);
-        pistolAchievement = a("pistol", -4, 2, NCItems.pistol, separatorAchievement);
         solarAchievement = a("solar", 2, 4, NCBlocks.solarPanel, factoryAchievement);
         synchrotronAchievement = a("synchrotron", 4, 6, NCBlocks.synchrotronIdle, factoryAchievement);
         synchrotronAchievement = a("antimatterBomb", 4, 8, NCBlocks.antimatterBombE, synchrotronAchievement);

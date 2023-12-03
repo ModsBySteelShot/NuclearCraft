@@ -4,7 +4,6 @@ entity.NukePrimed.name=Nuke - RUN!
 entity.EMPPrimed.name=EMP Bomb
 entity.AntimatterBombPrimed.name=Antimatter Bomb - RUN!
 entity.NuclearGrenade.name=Nuclear Grenade
-entity.EntityBullet.name=DU Bullet
 
 copperOre.name=Copper Ore
 tinOre.name=Tin Ore
@@ -539,9 +538,6 @@ computerPlate.name=Computer Plate
 mechanicalPart.name=Mechanical Part
 plastic.name=Bioplastic
 
-item.pistol.name=Pistol
-item.dUBullet.name=DU Bullet
-
 item.bronzePickaxe.name=Bronze Pickaxe
 item.bronzeShovel.name=Bronze Shovel
 item.bronzeAxe.name=Bronze Axe
@@ -626,8 +622,6 @@ achievement.separator=Further Refinement
 achievement.separator.desc=Make an Isotope Separator
 achievement.oxidiser=Maximum Efficiency
 achievement.oxidiser.desc=Make an Oxidiser
-achievement.pistol=Licence to Kill
-achievement.pistol.desc=Make a Pistol
 achievement.solar=Eco-Friendly
 achievement.solar.desc=Make a Solar Panel
 achievement.synchrotron=Extreme Photonics

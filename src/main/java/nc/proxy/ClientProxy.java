@@ -5,7 +5,6 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import nc.block.NCBlocks;
 import nc.entity.EntityAntimatterBombPrimed;
-import nc.entity.EntityBullet;
 import nc.entity.EntityEMPPrimed;
 import nc.entity.EntityNuclearGrenade;
 import nc.entity.EntityNukePrimed;
@@ -16,7 +15,6 @@ import nc.render.ItemRenderNuclearWorkspace;
 import nc.render.ItemRenderTubing1;
 import nc.render.ItemRenderTubing2;
 import nc.render.RenderAntimatterBombPrimed;
-import nc.render.RenderBullet;
 import nc.render.RenderEMPPrimed;
 import nc.render.RenderFusionReactor;
 import nc.render.RenderFusionReactorSteam;
@@ -88,9 +86,6 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(
             EntityNuclearGrenade.class,
             new RenderSnowball(NCItems.nuclearGrenadeThrown));
-
-        // DU Bullet
-        RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
     }
 
     @Override

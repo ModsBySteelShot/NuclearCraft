@@ -533,18 +533,6 @@ public class NuclearWorkspaceCraftingManager {
                         'S', Items.string, 'O', "oreObsidian", 'W', Blocks.wool }));
             this.addRecipe(
                 new NuclearWorkspaceShapedOreRecipe(
-                    new ItemStack(NCItems.pistol, 1),
-                    true,
-                    new Object[] { "BBBB ", "TTTTB", "  ATT", "   TT", "   TT", 'A', "plateAdvanced", 'B',
-                        "plateReinforced", 'T', "ingotTough" }));
-            this.addRecipe(
-                new NuclearWorkspaceShapedOreRecipe(
-                    new ItemStack(NCItems.dUBullet, 4),
-                    true,
-                    new Object[] { "TUGT", 'G', Items.gunpowder, 'T', "U238", 'U', "ingotTough" }));
-
-            this.addRecipe(
-                new NuclearWorkspaceShapedOreRecipe(
                     new ItemStack(NCItems.lithiumIonBattery, 1),
                     true,
                     new Object[] { "AAAA", "BCCB", "BCCB", "DDDD", 'A', "ingotLithiumManganeseDioxide", 'B',

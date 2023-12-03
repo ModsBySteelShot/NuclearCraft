@@ -35,12 +35,4 @@ public class EntityHandler {
         EntityRegistry.registerGlobalEntityID(entityClass, name, entityId);
         EntityRegistry.registerModEntity(entityClass, name, entityId, NuclearCraft.instance, 64, 1, true);
     }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    public static void registerEntityBullet(Class entityClass, String name) {
-        int entityId = EntityRegistry.findGlobalUniqueEntityId();
-
-        EntityRegistry.registerGlobalEntityID(entityClass, name, entityId);
-        EntityRegistry.registerModEntity(entityClass, name, entityId, NuclearCraft.instance, 64, 1, true);
-    }
 }

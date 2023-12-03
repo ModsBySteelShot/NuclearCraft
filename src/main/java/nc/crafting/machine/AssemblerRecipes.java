@@ -305,12 +305,6 @@ public class AssemblerRecipes extends NCRecipeHelper {
             new ItemStack(Items.stick, 0),
             new ItemStack(NCItems.fuel, 8, 48));
         addRecipe(
-            oreStack("ingotTough", 1),
-            oreStack("U238", NuclearCraft.workspace ? 2 : 1),
-            new ItemStack(Items.gunpowder, 1),
-            new ItemStack(Items.stick, 0),
-            new ItemStack(NCItems.dUBullet, 4));
-        addRecipe(
             new ItemStack(NCItems.fuel, 1, 48),
             oreStack("Pu238", 1),
             new ItemStack(Items.stick, 0),
