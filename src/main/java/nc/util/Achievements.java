@@ -20,7 +20,7 @@ public class Achievements {
 
     public Achievement registerAchievement(Achievement achievement) {
         page.getAchievements()
-                .add(achievement.registerStat());
+            .add(achievement.registerStat());
         return achievement;
     }
 

@@ -28,8 +28,8 @@ public class BlockDropHandler {
 
     public void extraMeta(BlockEvent.HarvestDropsEvent event, Block block, int meta, ItemStack drop) {
         if (event.harvester != null) if (event.block == block && event.blockMetadata == meta
-                && event.harvester.getHeldItem() != null
-                && !event.isSilkTouching) event.drops.add(drop);
+            && event.harvester.getHeldItem() != null
+            && !event.isSilkTouching) event.drops.add(drop);
     }
 
     public void chanceMetaExtra(BlockEvent.HarvestDropsEvent event, Block block, int meta, ItemStack drop, int chance) {

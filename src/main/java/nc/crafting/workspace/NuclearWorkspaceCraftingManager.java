@@ -1,7 +1,6 @@
 package nc.crafting.workspace;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,19 +19,11 @@ import nc.item.NCItems;
 
 public class NuclearWorkspaceCraftingManager {
 
-    /** The static instance of this class */
-    public static final NuclearWorkspaceCraftingManager instance = new NuclearWorkspaceCraftingManager();
-    /** A list of all the recipes added */
-    @SuppressWarnings("rawtypes")
-    public List recipes = new ArrayList();
-
+    private static NuclearWorkspaceCraftingManager instance;
     /**
-     * Returns the static instance of this class
+     * A list of all the recipes added
      */
-    public static final NuclearWorkspaceCraftingManager getInstance() {
-        /** The static instance of this class */
-        return instance;
-    }
+    private final List<IRecipe> recipes;
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public NuclearWorkspaceCraftingManager() {
@@ -431,15 +422,18 @@ public class NuclearWorkspaceCraftingManager {
             this.addRecipe(
                 new NuclearWorkspaceShapelessOreRecipe(
                     new ItemStack(NCItems.fuel, 1, 46),
-                    new Object[] { new ItemStack(NCItems.fuel, 1, 48), "Pu238" }));
+                    new ItemStack(NCItems.fuel, 1, 48),
+                    "Pu238"));
             this.addRecipe(
                 new NuclearWorkspaceShapelessOreRecipe(
                     new ItemStack(NCItems.fuel, 1, 139),
-                    new Object[] { new ItemStack(NCItems.fuel, 1, 48), "Am241" }));
+                    new ItemStack(NCItems.fuel, 1, 48),
+                    "Am241"));
             this.addRecipe(
                 new NuclearWorkspaceShapelessOreRecipe(
                     new ItemStack(NCItems.fuel, 1, 140),
-                    new Object[] { new ItemStack(NCItems.fuel, 1, 48), "Cf250" }));
+                    new ItemStack(NCItems.fuel, 1, 48),
+                    "Cf250"));
             this.addRecipe(
                 new NuclearWorkspaceShapedOreRecipe(
                     new ItemStack(NCItems.fuel, 1, 46),
@@ -518,6 +512,7 @@ public class NuclearWorkspaceCraftingManager {
                         new Object[] { "PPPPP", "PAAAP", "PAEAP", "PAAAP", "PPPPP", 'A', NCItems.antimatter, 'P',
                             "plateAdvanced", 'E', NCBlocks.superElectromagnetIdle }));
             }
+
             this.addRecipe(
                 new NuclearWorkspaceShapedOreRecipe(
                     new ItemStack(NCBlocks.solarPanel, 1),
@@ -538,13 +533,18 @@ public class NuclearWorkspaceCraftingManager {
                     new Object[] { "AAAA", "BCCB", "BCCB", "DDDD", 'A', "ingotLithiumManganeseDioxide", 'B',
                         "plateAdvanced", 'C', "dustLithium", 'D', "ingotHardCarbon" }));
         }
-
-        Collections.sort(this.recipes, new NuclearWorkspaceRecipeSorter());
     }
 
-    @SuppressWarnings("unchecked")
+    /**
+     * Returns the static instance of this class
+     */
+    public static NuclearWorkspaceCraftingManager getInstance() {
+        if (instance == null) instance = new NuclearWorkspaceCraftingManager();
+
+        return instance;
+    }
+
     public void addRecipe(IRecipe recipe) {
-        // NuclearWorkspaceCraftingManager.getInstance().getRecipeList().add(recipe);
         this.recipes.add(recipe);
     }
 
@@ -556,7 +556,7 @@ public class NuclearWorkspaceCraftingManager {
         int k = 0;
 
         if (p_92103_2_[i] instanceof String[]) {
-            String[] astring = (String[]) ((String[]) p_92103_2_[i++]);
+            String[] astring = (String[]) p_92103_2_[i++];
 
             for (int l = 0; l < astring.length; ++l) {
                 String s1 = astring[l];
@@ -595,8 +595,8 @@ public class NuclearWorkspaceCraftingManager {
         for (int i1 = 0; i1 < j * k; ++i1) {
             char c0 = s.charAt(i1);
 
-            if (hashmap.containsKey(Character.valueOf(c0))) {
-                aitemstack[i1] = ((ItemStack) hashmap.get(Character.valueOf(c0))).copy();
+            if (hashmap.containsKey(c0)) {
+                aitemstack[i1] = ((ItemStack) hashmap.get(c0)).copy();
             } else {
                 aitemstack[i1] = null;
             }
@@ -610,12 +610,8 @@ public class NuclearWorkspaceCraftingManager {
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public NuclearWorkspaceShapelessRecipes addShapelessRecipe(ItemStack p_77596_1_, Object... p_77596_2_) {
         ArrayList arraylist = new ArrayList();
-        Object[] aobject = p_77596_2_;
-        int i = p_77596_2_.length;
 
-        for (int j = 0; j < i; ++j) {
-            Object object1 = aobject[j];
-
+        for (Object object1 : p_77596_2_) {
             if (object1 instanceof ItemStack) {
                 arraylist.add(((ItemStack) object1).copy());
             } else if (object1 instanceof Item) {
@@ -673,7 +669,7 @@ public class NuclearWorkspaceCraftingManager {
             return new ItemStack(itemstack.getItem(), 1, i1);
         } else {
             for (j = 0; j < this.recipes.size(); ++j) {
-                IRecipe irecipe = (IRecipe) this.recipes.get(j);
+                IRecipe irecipe = this.recipes.get(j);
 
                 if (irecipe.matches(p_82787_1_, p_82787_2_)) {
                     return irecipe.getCraftingResult(p_82787_1_);
