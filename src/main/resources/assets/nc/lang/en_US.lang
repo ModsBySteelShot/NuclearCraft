@@ -1,8 +1,5 @@
 itemGroup.tabNC=NuclearCraft
 
-entity.NuclearMonster.name=Nuclear Monster
-entity.Paul.name=Paul
-entity.Brian.name=Brian
 entity.NukePrimed.name=Nuke - RUN!
 entity.EMPPrimed.name=EMP Bomb
 entity.AntimatterBombPrimed.name=Antimatter Bomb - RUN!
@@ -215,7 +212,6 @@ gui.radiationPower=Radiation Power
 gui.tubeIncomplete=Tube Incomplete
 gui.cornerIncomplete=Corner Incomplete
 gui.ringNotBigEnough=Ring Too Small
-gui.radiationPower=Radiation Power
 gui.antimatterProgress=Antimatter
 
 gui.online=Online
@@ -259,10 +255,6 @@ crushedMgB.name=Crushed Magnesium Diboride
 crushedObsidian.name=Crushed Obsidian
 tinyCrushedLead.name=Tiny Pile of Crushed Lead
 
-item.dominoes.name=Domino's Special
-item.boiledEgg.name=Boiled Egg
-item.ricecake.name=Ricecake (without Fish)
-item.fishAndRicecake.name=Fish and a Ricecake
 item.upgradeSpeed.name=Speed Upgrade
 item.upgradeEnergy.name=Energy Upgrade
 item.nuclearGrenade.name=Nuclear Grenade
@@ -622,10 +614,6 @@ item.radX.name=Rad-X
 
 achievement.nuclearFurnace=Speed Smelting
 achievement.nuclearFurnace.desc=Make a Nuclear Furnace
-achievement.dominos=Special Delivery
-achievement.dominos.desc=Make a Domino's Special
-achievement.fishAndRicecake=Strict Diet
-achievement.fishAndRicecake.desc=Make Fish and a Ricecake
 achievement.heavyDutyWorkspace=Nuclear Engineer
 achievement.heavyDutyWorkspace.desc=Make a Heavy Duty Workspace
 achievement.nuke=War... War Never Changes

@@ -57,16 +57,12 @@ public class NCItems {
     public static Item material;
     public static Item parts;
 
-    public static Item dominoes;
     public static Item upgradeSpeed;
     public static Item upgradeEnergy;
 
     public static Item nuclearGrenade;
     public static Item nuclearGrenadeThrown;
     public static Item portableEnderChest;
-    public static Item boiledEgg;
-    public static Item ricecake;
-    public static Item fishAndRicecake;
 
     public static Item recordPractice;
     public static Item recordArea51;

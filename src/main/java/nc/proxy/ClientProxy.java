@@ -1,43 +1,27 @@
 package nc.proxy;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderSnowball;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraftforge.client.MinecraftForgeClient;
-
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import nc.block.NCBlocks;
 import nc.entity.EntityAntimatterBombPrimed;
-import nc.entity.EntityBrian;
 import nc.entity.EntityBullet;
 import nc.entity.EntityEMPPrimed;
 import nc.entity.EntityNuclearGrenade;
-import nc.entity.EntityNuclearMonster;
 import nc.entity.EntityNukePrimed;
-import nc.entity.EntityPaul;
 import nc.item.NCItems;
-import nc.model.ModelBrian;
-import nc.model.ModelNuclearMonster;
-import nc.model.ModelPaul;
 import nc.render.ItemRenderFusionReactor;
 import nc.render.ItemRenderFusionReactorSteam;
 import nc.render.ItemRenderNuclearWorkspace;
 import nc.render.ItemRenderTubing1;
 import nc.render.ItemRenderTubing2;
 import nc.render.RenderAntimatterBombPrimed;
-import nc.render.RenderBrian;
 import nc.render.RenderBullet;
 import nc.render.RenderEMPPrimed;
 import nc.render.RenderFusionReactor;
 import nc.render.RenderFusionReactorSteam;
-import nc.render.RenderNuclearMonster;
 import nc.render.RenderNuclearWorkspace;
 import nc.render.RenderNukePrimed;
-import nc.render.RenderPaul;
 import nc.render.RenderTubing1;
 import nc.render.RenderTubing2;
 import nc.tile.crafting.TileNuclearWorkspace;
@@ -45,6 +29,12 @@ import nc.tile.generator.TileFusionReactor;
 import nc.tile.generator.TileFusionReactorSteam;
 import nc.tile.other.TileTubing1;
 import nc.tile.other.TileTubing2;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy {
 
@@ -93,13 +83,6 @@ public class ClientProxy extends CommonProxy {
         // Antimatter Bomb Primed
         RenderingRegistry
             .registerEntityRenderingHandler(EntityAntimatterBombPrimed.class, new RenderAntimatterBombPrimed());
-
-        // Entities
-        RenderingRegistry.registerEntityRenderingHandler(
-            EntityNuclearMonster.class,
-            new RenderNuclearMonster(new ModelNuclearMonster(), 0.3F));
-        RenderingRegistry.registerEntityRenderingHandler(EntityPaul.class, new RenderPaul(new ModelPaul(), 1.0F));
-        RenderingRegistry.registerEntityRenderingHandler(EntityBrian.class, new RenderBrian(new ModelBrian(), 1.0F));
 
         // Nuclear Grenade
         RenderingRegistry.registerEntityRenderingHandler(

@@ -12,7 +12,7 @@ public class Achievements {
     public final AchievementPage page;
 
     public Achievements(String name) {
-        page = new AchievementPage(name, new Achievement[0]);
+        page = new AchievementPage(name);
         AchievementPage.registerAchievementPage(page);
 
         // cpw.mods.fml.common.FMLCommonHandler.instance().bus().register(this);
@@ -20,11 +20,12 @@ public class Achievements {
 
     public Achievement registerAchievement(Achievement achievement) {
         page.getAchievements()
-            .add(achievement.registerStat());
+                .add(achievement.registerStat());
         return achievement;
     }
 
     @SubscribeEvent
+    @SuppressWarnings("unused")
     public void onCrafting(PlayerEvent.ItemCraftedEvent event) {
         Item item = event.crafting.getItem();
         int damage = event.crafting.getItemDamage();

@@ -223,18 +223,7 @@ public class InfoRecipes {
             NCBlocks.coolantCoolerBlock,
             NuclearCraft.coolantCool,
             "Doubly effective when adjacent-to a Water Reactor Cooler");
-        /*
-         * addRecipe(new ItemStack(NCItems.dominoes),
-         * "-Paul's Favourite: He'll-follow anyone he sees-carrying this in their hand...--Restores 16 hunger");
-         * addRecipe(new ItemStack(NCItems.boiledEgg), "-Restores 5 hunger");
-         * addRecipe(new ItemStack(NCItems.fuel, 1, 34),
-         * "-Right click on a water-source block with an-empty fluid cell to obtain");
-         * addRecipe(new ItemStack(NCItems.fuel, 1, 45), "-Right click on a water-source block to-obtain a water cell");
-         * addRecipe(new ItemStack(NCItems.ricecake), "-Healthy meal,-especially with fish--Restores 4 hunger");
-         * addRecipe(new ItemStack(NCItems.fishAndRicecake),
-         * "-At 8 in the morning he'll have-fish and a ricecake, at 10 he'll-have fish, at 12 he'll have fish-and a ricecake, at 2 he'll-have fish, at 4, just before he-trains, he'll have fish and a-ricecake, he'll train, he'll have-his fish, he'll come home and-have some more fish with a-ricecake and then have some-fish before he goes to bed"
-         * );
-         */
+
         addRecipe(new ItemStack(NCItems.fuel, 1, 35), "-Used to oxidise and-improve fission fuels");
         addRecipe(new ItemStack(NCItems.fuel, 1, 36), "-Fusion fuel--Best combined with Boron11-or Lithium7");
         addRecipe(

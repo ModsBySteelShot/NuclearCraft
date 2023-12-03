@@ -67,7 +67,8 @@ public final class AnvilRepairHandler {
         return isRepairable(stack) && stack.isItemDamaged();
     }
 
-    @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = false)
+    @SubscribeEvent(priority = EventPriority.NORMAL)
+    @SuppressWarnings("unused")
     public void onAnvilChange(final AnvilUpdateEvent event) {
 
         final ItemStack itemToRepair = event.left;
