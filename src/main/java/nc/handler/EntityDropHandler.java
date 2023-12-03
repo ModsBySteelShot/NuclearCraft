@@ -17,12 +17,9 @@ public class EntityDropHandler {
     @SuppressWarnings("unused")
     public void onEntityDrop(LivingDropsEvent event) {
         if (NuclearCraft.extraDrops && event.entity.worldObj.getGameRules()
-            .getGameRuleBooleanValue("doMobLoot")) {
+                .getGameRuleBooleanValue("doMobLoot")) {
             if (event.entityLiving instanceof EntityMob) {
                 if (rand.nextInt(100) < 5) event.entityLiving.dropItem(NCItems.dUBullet, 1 + rand.nextInt(2));
-                if (rand.nextInt(400) < 1) event.entityLiving.dropItem(NCItems.recordArea51, 1);
-                if (rand.nextInt(400) < 1) event.entityLiving.dropItem(NCItems.recordNeighborhood, 1);
-                if (rand.nextInt(400) < 1) event.entityLiving.dropItem(NCItems.recordPractice, 1);
             }
         }
     }

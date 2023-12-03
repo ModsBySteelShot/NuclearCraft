@@ -109,7 +109,6 @@ import nc.item.NCHoe;
 import nc.item.NCItems;
 import nc.item.NCPaxel;
 import nc.item.NCPickaxe;
-import nc.item.NCRecord;
 import nc.item.NCShovel;
 import nc.item.NCSword;
 import nc.item.armour.BoronArmour;
@@ -2007,35 +2006,6 @@ public class NuclearCraft {
         NCItems.dUBoots = new DUArmour(dUArmorMaterial, dUBootsID, 3, "dUBoots");
         GameRegistry.registerItem(NCItems.dUBoots, "dUBoots");
 
-        // Records
-        NCItems.recordPractice = new NCRecord(
-                0,
-                "Practice",
-                "recordPractice",
-                "Whenever Jimmy has some new discoveries",
-                "to test out, his virtual practice labs are",
-                "the best places to see what's possible...");
-        GameRegistry.registerItem(NCItems.recordPractice, "recordPractice");
-        NCItems.recordArea51 = new NCRecord(
-                0,
-                "Area51",
-                "recordArea51",
-                "Jimmy, with his newly aquired map, must",
-                "make his way to the mines of Area 51",
-                "to recover his invisibility technology...");
-        GameRegistry.registerItem(NCItems.recordArea51, "recordArea51");
-        NCItems.recordNeighborhood = new NCRecord(
-                0,
-                "Neighborhood",
-                "recordNeighborhood",
-                "Jimmy's hometown - a quiet and green place",
-                "with roads to many great places such as",
-                "Retroland and Downtown...");
-        GameRegistry.registerItem(NCItems.recordNeighborhood, "recordNeighborhood");
-
-        // NCItems.recordJoe = new NCRecord(0, "Joe", "recordJoe");
-        // GameRegistry.registerItem(NCItems.recordJoe, "recordJoe");
-
         // Blank
         NCItems.blank = new ItemNC("", "blank", false);
         GameRegistry.registerItem(NCItems.blank, "blank");
@@ -2488,14 +2458,6 @@ public class NuclearCraft {
         // Other Shapeless Recipes
         GameRegistry.addRecipe(
                 new ShapelessOreRecipe(new ItemStack(NCItems.parts, 3, 4), Items.sugar, "dustLapis", Items.redstone));
-
-        GameRegistry
-                .addRecipe(new ShapelessOreRecipe(new ItemStack(NCItems.recordPractice, 1), "record", "ingotBoron"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(NCItems.recordArea51, 1), "record", "ingotTough"));
-        GameRegistry.addRecipe(
-                new ShapelessOreRecipe(new ItemStack(NCItems.recordNeighborhood, 1), "record", "universalReactant"));
-        // GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(NCItems.recordJoe, 1), new Object[] {"record",
-        // "record"}));
 
         GameRegistry.addRecipe(
                 new ShapelessOreRecipe(
@@ -3182,28 +3144,8 @@ public class NuclearCraft {
             ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.toughBow, 1), 1, 1, lootModifier));
             ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST)
-                    .addItem(
-                            new WeightedRandomChestContent(new ItemStack(NCItems.recordPractice, 1), 1, 1, 2 * lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST)
-                    .addItem(
-                            new WeightedRandomChestContent(new ItemStack(NCItems.recordArea51, 1), 1, 1, 2 * lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST)
-                    .addItem(
-                            new WeightedRandomChestContent(
-                                    new ItemStack(NCItems.recordNeighborhood, 1),
-                                    1,
-                                    1,
-                                    2 * lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.dUBullet, 1), 6, 8, 4 * lootModifier));
 
-            ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.recordPractice, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.recordArea51, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR)
-                    .addItem(
-                            new WeightedRandomChestContent(new ItemStack(NCItems.recordNeighborhood, 1), 1, 1, lootModifier));
             ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.pistol, 1), 1, 1, lootModifier));
             ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR)
@@ -3262,19 +3204,6 @@ public class NuclearCraft {
             ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.parts, 1, 9), 2, 4, lootModifier));
             ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING)
-                    .addItem(
-                            new WeightedRandomChestContent(new ItemStack(NCItems.recordPractice, 1), 1, 1, 2 * lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING)
-                    .addItem(
-                            new WeightedRandomChestContent(new ItemStack(NCItems.recordArea51, 1), 1, 1, 2 * lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING)
-                    .addItem(
-                            new WeightedRandomChestContent(
-                                    new ItemStack(NCItems.recordNeighborhood, 1),
-                                    1,
-                                    1,
-                                    2 * lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.parts, 1, 16), 4, 8, 4 * lootModifier));
             ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.parts, 1, 17), 4, 8, 4 * lootModifier));
@@ -3297,16 +3226,6 @@ public class NuclearCraft {
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.fuel, 1, 50), 2, 4, lootModifier));
             ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.fuel, 1, 47), 2, 4, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.recordPractice, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY)
-                    .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.recordArea51, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY)
-                    .addItem(
-                            new WeightedRandomChestContent(new ItemStack(NCItems.recordNeighborhood, 1), 1, 1, lootModifier));
-            ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY)
-                    .addItem(
-                            new WeightedRandomChestContent(new ItemStack(NCBlocks.simpleQuantumUp, 1), 1, 1, lootModifier));
             ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY)
                     .addItem(new WeightedRandomChestContent(new ItemStack(NCItems.dUHelm, 1), 1, 1, lootModifier));
             ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY)
@@ -4069,11 +3988,6 @@ public class NuclearCraft {
         OreDictionary.registerOre("filledNCGasCell", new ItemStack(NCItems.fuel, 1, 38));
         OreDictionary.registerOre("filledNCGasCell", new ItemStack(NCItems.fuel, 1, 39));
         OreDictionary.registerOre("filledNCGasCell", new ItemStack(NCItems.fuel, 1, 40));
-
-        // Record Ore Dictionary
-        OreDictionary.registerOre("record", new ItemStack(NCItems.recordPractice, 1));
-        OreDictionary.registerOre("record", new ItemStack(NCItems.recordArea51, 1));
-        OreDictionary.registerOre("record", new ItemStack(NCItems.recordNeighborhood, 1));
 
         // Seeds
         MinecraftForge

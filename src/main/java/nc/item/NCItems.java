@@ -64,10 +64,6 @@ public class NCItems {
     public static Item nuclearGrenadeThrown;
     public static Item portableEnderChest;
 
-    public static Item recordPractice;
-    public static Item recordArea51;
-    public static Item recordNeighborhood;
-    // public static Item recordJoe;
     public static Item blank;
 
     public static Item antimatter;

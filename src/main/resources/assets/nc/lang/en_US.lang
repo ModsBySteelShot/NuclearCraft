@@ -594,14 +594,6 @@ reactionVessel.name=Small Nuclear Chamber
 toughAlloy.name=Tough Alloy Ingot
 toughDust.name=Tough Alloy Dust
 
-item.recordPractice.name=NuclearCraft Music Disc
-item.Practice.desc=Yokian Practice
-item.recordArea51.name=NuclearCraft Music Disc
-item.Area51.desc=Jimmy in Area 51
-item.recordNeighborhood.name=NuclearCraft Music Disc
-item.recordJoe.name=Special Michael Music Disc
-item.Neighborhood.desc=Retroville Neighbourhood
-
 item.blank.name=Blank
 
 item.antimatter.name=Antimatter (Temporary)

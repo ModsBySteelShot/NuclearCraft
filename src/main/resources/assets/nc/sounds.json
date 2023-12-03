@@ -6,33 +6,6 @@
 			"nukeAlarm"
 		]
 	},
-	"records.Area51": {
-		"category": "record",
-		"sounds": [
-			{
-				"name": "records/Area51",
-				"stream": "true"
-			}
-		]
-	},
-	"records.Practice": {
-		"category": "record",
-		"sounds": [
-			{
-				"name": "records/Practice",
-				"stream": "true"
-			}
-		]
-	},
-	"records.Neighborhood": {
-		"category": "record",
-		"sounds": [
-			{
-				"name": "records/Neighborhood",
-				"stream": "true"
-			}
-		]
-	},
 	"shield1": {
 		"category": "ambient",
 		"sounds": [
