@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
 import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.FurnaceRecipeHandler.FuelPair;
 import codechicken.nei.recipe.GuiRecipe;
 import nc.NuclearCraft;
 
@@ -18,9 +19,9 @@ public class MetalFurnaceFuelRecipeHandler extends MetalFurnaceRecipeHandler {
 
     public class CachedFuelRecipe extends CachedRecipe {
 
-        public MetalFuelPair metalfuel;
+        public FuelPair metalfuel;
 
-        public CachedFuelRecipe(MetalFuelPair fuel) {
+        public CachedFuelRecipe(FuelPair fuel) {
             this.metalfuel = fuel;
         }
 
@@ -37,7 +38,7 @@ public class MetalFurnaceFuelRecipeHandler extends MetalFurnaceRecipeHandler {
         }
     }
 
-    private ArrayList<MetalSmeltingPair> mmetalfurnace = new ArrayList<MetalFurnaceRecipeHandler.MetalSmeltingPair>();
+    private final ArrayList<MetalSmeltingPair> mmetalfurnace = new ArrayList<MetalFurnaceRecipeHandler.MetalSmeltingPair>();
 
     public MetalFurnaceFuelRecipeHandler() {
         super();
@@ -59,17 +60,16 @@ public class MetalFurnaceFuelRecipeHandler extends MetalFurnaceRecipeHandler {
 
     public void loadCraftingRecipes(String outputId, Object... results) {
         if (outputId.equals("metalfuel") && getClass() == MetalFurnaceFuelRecipeHandler.class)
-            for (MetalFuelPair fuel : ametalfuels) arecipes.add(new CachedFuelRecipe(fuel));
+            for (FuelPair fuel : afuels) arecipes.add(new CachedFuelRecipe(fuel));
     }
 
     public void loadUsageRecipes(ItemStack ingredient) {
-        for (MetalFuelPair fuel : ametalfuels)
-            if (fuel.stack.contains(ingredient)) arecipes.add(new CachedFuelRecipe(fuel));
+        for (FuelPair fuel : afuels) if (fuel.stack.contains(ingredient)) arecipes.add(new CachedFuelRecipe(fuel));
     }
 
     public List<String> handleItemTooltip(GuiRecipe<?> gui, ItemStack stack, List<String> currenttip, int recipe) {
         CachedFuelRecipe crecipe = (CachedFuelRecipe) arecipes.get(recipe);
-        MetalFuelPair fuel = crecipe.metalfuel;
+        FuelPair fuel = crecipe.metalfuel;
         float burnTime = (float) ((double) (fuel.burnTime * NuclearCraft.metalFurnaceCookSpeed) / 8000);
 
         if (gui.isMouseOver(fuel.stack, recipe) && burnTime < 1) {

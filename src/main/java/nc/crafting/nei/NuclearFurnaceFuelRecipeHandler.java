@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
 import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.FurnaceRecipeHandler.FuelPair;
 import codechicken.nei.recipe.GuiRecipe;
 import nc.NuclearCraft;
 
@@ -18,9 +19,9 @@ public class NuclearFurnaceFuelRecipeHandler extends NuclearFurnaceRecipeHandler
 
     public class CachednuclearfuelRecipe extends CachedRecipe {
 
-        public nuclearfuelPair nuclearfuel;
+        public FuelPair nuclearfuel;
 
-        public CachednuclearfuelRecipe(nuclearfuelPair nuclearfuel) {
+        public CachednuclearfuelRecipe(FuelPair nuclearfuel) {
             this.nuclearfuel = nuclearfuel;
         }
 
@@ -37,7 +38,7 @@ public class NuclearFurnaceFuelRecipeHandler extends NuclearFurnaceRecipeHandler
         }
     }
 
-    private ArrayList<NuclearSmeltingPair> mnuclearfurnace = new ArrayList<NuclearFurnaceRecipeHandler.NuclearSmeltingPair>();
+    private final ArrayList<NuclearSmeltingPair> mnuclearfurnace = new ArrayList<NuclearFurnaceRecipeHandler.NuclearSmeltingPair>();
 
     public NuclearFurnaceFuelRecipeHandler() {
         super();
@@ -59,18 +60,17 @@ public class NuclearFurnaceFuelRecipeHandler extends NuclearFurnaceRecipeHandler
 
     public void loadCraftingRecipes(String outputId, Object... results) {
         if (outputId.equals("nuclearfuel") && getClass() == NuclearFurnaceFuelRecipeHandler.class)
-            for (nuclearfuelPair nuclearfuel : anuclearnuclearfuels)
-                arecipes.add(new CachednuclearfuelRecipe(nuclearfuel));
+            for (FuelPair nuclearfuel : afuels) arecipes.add(new CachednuclearfuelRecipe(nuclearfuel));
     }
 
     public void loadUsageRecipes(ItemStack ingredient) {
-        for (nuclearfuelPair nuclearfuel : anuclearnuclearfuels)
+        for (FuelPair nuclearfuel : afuels)
             if (nuclearfuel.stack.contains(ingredient)) arecipes.add(new CachednuclearfuelRecipe(nuclearfuel));
     }
 
     public List<String> handleItemTooltip(GuiRecipe<?> gui, ItemStack stack, List<String> currenttip, int recipe) {
         CachednuclearfuelRecipe crecipe = (CachednuclearfuelRecipe) arecipes.get(recipe);
-        nuclearfuelPair nuclearfuel = crecipe.nuclearfuel;
+        FuelPair nuclearfuel = crecipe.nuclearfuel;
         float burnTime = (float) ((double) (nuclearfuel.burnTime * NuclearCraft.nuclearFurnaceCookSpeed) / 300);
 
         if (gui.isMouseOver(nuclearfuel.stack, recipe) && burnTime < 1) {

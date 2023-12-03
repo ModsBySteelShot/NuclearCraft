@@ -2,16 +2,13 @@ package nc.crafting.nei;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -19,6 +16,7 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import codechicken.nei.ItemList;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.FurnaceRecipeHandler.FuelPair;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 import nc.NuclearCraft;
 import nc.gui.machine.GuiNuclearFurnace;
@@ -26,43 +24,48 @@ import nc.item.NCItems;
 
 public class NuclearFurnaceRecipeHandler extends TemplateRecipeHandler {
 
-    public class NuclearSmeltingPair extends CachedRecipe {
+    public static List<FuelPair> afuels;
 
-        public NuclearSmeltingPair(ItemStack ingred, ItemStack result) {
-            ingred.stackSize = 1;
-            this.ingred = new PositionedStack(ingred, 51, 6);
-            this.result = new PositionedStack(result, 111, 24);
+    private static List<FuelPair> nuclearFuels() {
+        List<FuelPair> includedFuels = new ArrayList<>();
+        Set<Item> excludedFuels = FuelHandlerHelper.excludedFuels();
+
+        for (ItemStack itemStack : ItemList.items) {
+            if (!excludedFuels.contains(itemStack.getItem())) {
+                int burnTime;
+
+                if ((burnTime = getItemBurnTime(itemStack)) > 0) {
+                    includedFuels.add(new FuelPair(itemStack, burnTime));
+                }
+            }
         }
 
-        public List<PositionedStack> getIngredients() {
-            return getCycledIngredients(cycleticks / 24, Arrays.asList(ingred));
-        }
-
-        public PositionedStack getResult() {
-            return result;
-        }
-
-        public PositionedStack getOtherStack() {
-            return anuclearnuclearfuels.get((cycleticks / 24) % anuclearnuclearfuels.size()).stack;
-        }
-
-        PositionedStack ingred;
-        PositionedStack result;
+        return includedFuels;
     }
 
-    public static class nuclearfuelPair {
-
-        public nuclearfuelPair(ItemStack ingred, int burnTime) {
-            this.stack = new PositionedStack(ingred, 51, 42, false);
-            this.burnTime = burnTime;
+    public static int getItemBurnTime(ItemStack itemstack) {
+        if (itemstack != null) {
+            Item item = itemstack.getItem();
+            if (item == new ItemStack(NCItems.material, 1, 4).getItem() && item.getDamage(itemstack) == 4) {
+                return (int) Math.ceil(
+                    ((double) (NuclearCraft.nuclearFurnaceCookSpeed * 32) / NuclearCraft.nuclearFurnaceCookEfficiency)
+                        * Math.ceil((double) 300 / NuclearCraft.nuclearFurnaceCookSpeed));
+            } else if (item == new ItemStack(NCItems.material, 1, 5).getItem() && item.getDamage(itemstack) == 5) {
+                return (int) Math.ceil(
+                    ((double) (NuclearCraft.nuclearFurnaceCookSpeed * 32) / NuclearCraft.nuclearFurnaceCookEfficiency)
+                        * Math.ceil((double) 300 / NuclearCraft.nuclearFurnaceCookSpeed));
+            } else if (item == new ItemStack(NCItems.material, 1, 19).getItem() && item.getDamage(itemstack) == 19) {
+                return (int) Math.ceil(
+                    ((double) (NuclearCraft.nuclearFurnaceCookSpeed * 32) / NuclearCraft.nuclearFurnaceCookEfficiency)
+                        * Math.ceil((double) 300 / NuclearCraft.nuclearFurnaceCookSpeed));
+            } else if (item == new ItemStack(NCItems.material, 1, 20).getItem() && item.getDamage(itemstack) == 20) {
+                return (int) Math.ceil(
+                    ((double) (NuclearCraft.nuclearFurnaceCookSpeed * 32) / NuclearCraft.nuclearFurnaceCookEfficiency)
+                        * Math.ceil((double) 300 / NuclearCraft.nuclearFurnaceCookSpeed));
+            }
         }
-
-        public PositionedStack stack;
-        public int burnTime;
+        return 0;
     }
-
-    public static ArrayList<nuclearfuelPair> anuclearnuclearfuels;
-    public static HashSet<Block> enuclearfuels;
 
     public void loadTransferRects() {
         transferRects.add(new RecipeTransferRect(new Rectangle(50, 23, 18, 18), "nuclearfuel"));
@@ -78,15 +81,16 @@ public class NuclearFurnaceRecipeHandler extends TemplateRecipeHandler {
     }
 
     public TemplateRecipeHandler newInstance() {
-        if (anuclearnuclearfuels == null) findnuclearfuels();
+        if (afuels == null) afuels = nuclearFuels();
+
         return super.newInstance();
     }
 
     public void loadCraftingRecipes(String outputId, Object... results) {
         if (outputId.equals("nuclearsmelting") && getClass() == NuclearFurnaceRecipeHandler.class) {// don't want
-                                                                                                    // subclasses
-                                                                                                    // getting a hold of
-                                                                                                    // this
+            // subclasses
+            // getting a hold of
+            // this
             @SuppressWarnings("unchecked")
             Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) FurnaceRecipes.smelting()
                 .getSmeltingList();
@@ -106,7 +110,7 @@ public class NuclearFurnaceRecipeHandler extends TemplateRecipeHandler {
 
     public void loadUsageRecipes(String inputId, Object... ingredients) {
         if (inputId.equals("nuclearfuel") && getClass() == NuclearFurnaceRecipeHandler.class)// don't want subclasses
-                                                                                             // getting a hold of this
+            // getting a hold of this
             loadCraftingRecipes("nuclearsmelting");
         else super.loadUsageRecipes(inputId, ingredients);
     }
@@ -118,7 +122,7 @@ public class NuclearFurnaceRecipeHandler extends TemplateRecipeHandler {
         for (Entry<ItemStack, ItemStack> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameTypeCrafting(recipe.getKey(), ingredient)) {
                 NuclearSmeltingPair arecipe = new NuclearSmeltingPair(recipe.getKey(), recipe.getValue());
-                arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
+                arecipe.setIngredientPermutation(Collections.singletonList(arecipe.ingred), ingredient);
                 arecipes.add(arecipe);
             }
     }
@@ -132,49 +136,27 @@ public class NuclearFurnaceRecipeHandler extends TemplateRecipeHandler {
         drawProgressBar(74, 23, 176, 14, 24, 16, 3, 0);
     }
 
-    private static Set<Item> excludednuclearfuels() {
-        Set<Item> enuclearfuels = new HashSet<Item>();
-        enuclearfuels.add(Item.getItemFromBlock(Blocks.brown_mushroom));
-        enuclearfuels.add(Item.getItemFromBlock(Blocks.red_mushroom));
-        enuclearfuels.add(Item.getItemFromBlock(Blocks.standing_sign));
-        enuclearfuels.add(Item.getItemFromBlock(Blocks.wall_sign));
-        enuclearfuels.add(Item.getItemFromBlock(Blocks.wooden_door));
-        enuclearfuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
-        return enuclearfuels;
-    }
+    public class NuclearSmeltingPair extends CachedRecipe {
 
-    private static void findnuclearfuels() {
-        anuclearnuclearfuels = new ArrayList<nuclearfuelPair>();
-        Set<Item> enuclearfuels = excludednuclearfuels();
-        for (ItemStack item : ItemList.items) if (!enuclearfuels.contains(item.getItem())) {
-            int burnTime = getItemBurnTime(item);
-            if (burnTime > 0) anuclearnuclearfuels.add(new nuclearfuelPair(item.copy(), burnTime));
+        PositionedStack ingred;
+        PositionedStack result;
+
+        public NuclearSmeltingPair(ItemStack ingred, ItemStack result) {
+            ingred.stackSize = 1;
+            this.ingred = new PositionedStack(ingred, 51, 6);
+            this.result = new PositionedStack(result, 111, 24);
         }
-    }
 
-    public static int getItemBurnTime(ItemStack itemstack) {
-        if (itemstack == null) {
-            return 0;
-        } else {
-            Item item = itemstack.getItem();
-            if (item == new ItemStack(NCItems.material, 1, 4).getItem() && item.getDamage(itemstack) == 4) {
-                return (int) Math.ceil(
-                    ((NuclearCraft.nuclearFurnaceCookSpeed * 32) / NuclearCraft.nuclearFurnaceCookEfficiency)
-                        * Math.ceil(300 / NuclearCraft.nuclearFurnaceCookSpeed));
-            } else if (item == new ItemStack(NCItems.material, 1, 5).getItem() && item.getDamage(itemstack) == 5) {
-                return (int) Math.ceil(
-                    ((NuclearCraft.nuclearFurnaceCookSpeed * 32) / NuclearCraft.nuclearFurnaceCookEfficiency)
-                        * Math.ceil(300 / NuclearCraft.nuclearFurnaceCookSpeed));
-            } else if (item == new ItemStack(NCItems.material, 1, 19).getItem() && item.getDamage(itemstack) == 19) {
-                return (int) Math.ceil(
-                    ((NuclearCraft.nuclearFurnaceCookSpeed * 32) / NuclearCraft.nuclearFurnaceCookEfficiency)
-                        * Math.ceil(300 / NuclearCraft.nuclearFurnaceCookSpeed));
-            } else if (item == new ItemStack(NCItems.material, 1, 20).getItem() && item.getDamage(itemstack) == 20) {
-                return (int) Math.ceil(
-                    ((NuclearCraft.nuclearFurnaceCookSpeed * 32) / NuclearCraft.nuclearFurnaceCookEfficiency)
-                        * Math.ceil(300 / NuclearCraft.nuclearFurnaceCookSpeed));
-            }
-            return 0;
+        public List<PositionedStack> getIngredients() {
+            return getCycledIngredients(cycleticks / 24, Collections.singletonList(ingred));
+        }
+
+        public PositionedStack getResult() {
+            return result;
+        }
+
+        public PositionedStack getOtherStack() {
+            return afuels.get((cycleticks / 24) % afuels.size()).stack;
         }
     }
 }

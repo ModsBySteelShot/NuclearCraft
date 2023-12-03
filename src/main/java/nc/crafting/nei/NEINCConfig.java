@@ -37,52 +37,73 @@ public class NEINCConfig implements IConfigureNEI {
         API.registerUsageHandler(new CrusherRecipeHandler());
         API.registerRecipeHandler(new CrusherFuelRecipeHandler());
         API.registerUsageHandler(new CrusherFuelRecipeHandler());
+
         API.registerRecipeHandler(new MetalFurnaceRecipeHandler());
         API.registerUsageHandler(new MetalFurnaceRecipeHandler());
         API.registerRecipeHandler(new MetalFurnaceFuelRecipeHandler());
         API.registerUsageHandler(new MetalFurnaceFuelRecipeHandler());
+
         API.registerRecipeHandler(new NuclearFurnaceRecipeHandler());
         API.registerUsageHandler(new NuclearFurnaceRecipeHandler());
         API.registerRecipeHandler(new NuclearFurnaceFuelRecipeHandler());
         API.registerUsageHandler(new NuclearFurnaceFuelRecipeHandler());
+
         API.registerRecipeHandler(new ElectricCrusherRecipeHandler());
         API.registerUsageHandler(new ElectricCrusherRecipeHandler());
         API.registerRecipeHandler(new ElectricFurnaceRecipeHandler());
         API.registerUsageHandler(new ElectricFurnaceRecipeHandler());
+
         API.registerRecipeHandler(new RecyclerRecipeHandler());
         API.registerUsageHandler(new RecyclerRecipeHandler());
+
         API.registerRecipeHandler(new HastenerRecipeHandler());
         API.registerUsageHandler(new HastenerRecipeHandler());
+
         API.registerRecipeHandler(new SeparatorRecipeHandler());
         API.registerUsageHandler(new SeparatorRecipeHandler());
+
         API.registerRecipeHandler(new NuclearWorkspaceRecipeHandler());
         API.registerUsageHandler(new NuclearWorkspaceRecipeHandler());
+
         API.registerRecipeHandler(new FissionRecipeHandler());
         API.registerUsageHandler(new FissionRecipeHandler());
+
         API.registerRecipeHandler(new FissionSteamRecipeHandler());
         API.registerUsageHandler(new FissionSteamRecipeHandler());
+
         API.registerRecipeHandler(new CollectorRecipeHandler());
         API.registerUsageHandler(new CollectorRecipeHandler());
+
         API.registerRecipeHandler(new ElectrolyserRecipeHandler());
         API.registerUsageHandler(new ElectrolyserRecipeHandler());
+
         API.registerRecipeHandler(new OxidiserRecipeHandler());
         API.registerUsageHandler(new OxidiserRecipeHandler());
+
         API.registerRecipeHandler(new IoniserRecipeHandler());
         API.registerUsageHandler(new IoniserRecipeHandler());
+
         API.registerRecipeHandler(new FactoryRecipeHandler());
         API.registerUsageHandler(new FactoryRecipeHandler());
+
         API.registerRecipeHandler(new IrradiatorRecipeHandler());
         API.registerUsageHandler(new IrradiatorRecipeHandler());
+
         API.registerRecipeHandler(new CoolerRecipeHandler());
         API.registerUsageHandler(new CoolerRecipeHandler());
+
         API.registerRecipeHandler(new HeliumExtractorRecipeHandler());
         API.registerUsageHandler(new HeliumExtractorRecipeHandler());
+
         API.registerRecipeHandler(new AssemblerRecipeHandler());
         API.registerUsageHandler(new AssemblerRecipeHandler());
+
         API.registerRecipeHandler(new FusionRecipeHandler());
         API.registerUsageHandler(new FusionRecipeHandler());
+
         API.registerRecipeHandler(new FusionSteamRecipeHandler());
         API.registerUsageHandler(new FusionSteamRecipeHandler());
+
         API.registerRecipeHandler(new InfoUsageHandler());
         API.registerUsageHandler(new InfoUsageHandler());
 
