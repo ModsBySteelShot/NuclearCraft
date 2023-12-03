@@ -34,6 +34,9 @@
  * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
+    shadowImplementation("curse.maven:cofh-lib-220333:2388748")
+    shadowImplementation("mekanism:Mekanism-Community-Edition:1.7.10-9.10.32:API")
+
     compileOnly('com.github.GTNewHorizons:CodeChickenCore:1.1.13:dev') {
         transitive = false
     }
