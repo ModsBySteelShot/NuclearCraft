@@ -1,5 +1,6 @@
 package nc.block.quantum;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import net.minecraft.block.BlockContainer;
@@ -23,7 +24,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import nc.block.NCBlocks;
 import nc.tile.quantum.TileSimpleQuantum;
 import nc.util.Complex;
-import scala.actors.threadpool.Arrays;
 
 public class BlockSimpleQuantum extends BlockContainer {
 

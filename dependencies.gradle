@@ -35,17 +35,17 @@
  */
 dependencies {
     shadowImplementation("curse.maven:cofh-lib-220333:2388748")
-    shadowImplementation("mekanism:Mekanism-Community-Edition:1.7.10-9.10.32:API")
+    shadowImplementation("mekanism:Mekanism-Community-Edition:1.7.10-9.10.36:API")
 
-    compileOnly('com.github.GTNewHorizons:CodeChickenCore:1.1.13:dev') {
+    api('com.github.GTNewHorizons:CodeChickenCore:1.2.1:dev') {
         transitive = false
     }
 
-    compileOnly('com.github.GTNewHorizons:CodeChickenLib:1.1.10:dev') {
+    api('com.github.GTNewHorizons:CodeChickenLib:1.2.1:dev') {
         transitive = false
     }
 
-    compileOnly('com.github.GTNewHorizons:NotEnoughItems:2.4.12-GTNH:dev') {
+    api('com.github.GTNewHorizons:NotEnoughItems:2.5.24-GTNH:dev') {
         transitive = false
     }
 

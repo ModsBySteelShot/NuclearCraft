@@ -5,7 +5,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -62,19 +61,6 @@ public class BlockSynchrotron extends BlockMachine {
             ((ICommandSender) player).addChatMessage(localIChatComponent);
         }
         return true;
-    }
-
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase,
-        ItemStack itemstack) {
-        super.onBlockPlacedBy(world, x, y, z, entityLivingBase, itemstack);
-
-        IChatComponent localIChatComponent;
-        localIChatComponent = IChatComponent.Serializer.func_150699_a(
-            "[{text:\"Use NuclearCraft's NEI info system or click here for help with the mod!\",color:white,italic:false,clickEvent:{action:open_url,value:\"http://minecraft.curseforge.com/projects/nuclearcraft-mod\"}}]");
-
-        if (world.isRemote) {
-            ((ICommandSender) entityLivingBase).addChatMessage(localIChatComponent);
-        }
     }
 
     public static void updateBlockState(boolean active, World worldObj, int xCoord, int yCoord, int zCoord) {

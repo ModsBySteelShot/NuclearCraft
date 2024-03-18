@@ -1,5 +1,7 @@
 package nc;
 
+import static nc.NuclearCraft.*;
+
 import java.io.File;
 
 import net.minecraft.block.Block;
@@ -238,9 +240,11 @@ import nc.tile.storage.TileVoltaicPile;
 import nc.util.Achievements;
 import nc.worldgen.OreGen;
 
-@Mod(modid = Tags.MODID, name = Tags.MODNAME, version = Tags.VERSION)
-
+@Mod(modid = MODID, name = MODNAME, version = Tags.VERSION)
 public class NuclearCraft {
+
+    public static final String MODID = "NuclearCraft";
+    public static final String MODNAME = "NuclearCraft";
 
     public static final CreativeTabs tabNC = new CreativeTabs("tabNC") {
 
@@ -1185,33 +1189,28 @@ public class NuclearCraft {
         // Fluid Registry
         liquidHelium = new FluidHelium("liquidHelium");
         FluidRegistry.registerFluid(liquidHelium);
-        NCBlocks.blockHelium = new BlockHelium(liquidHelium, liquidhelium.setReplaceable(), NuclearCraft.heliumfreeze)
+        NCBlocks.blockHelium = new BlockHelium(liquidHelium, liquidhelium.setReplaceable(), heliumfreeze)
             .setCreativeTab(tabNC)
             .setBlockName("liquidHeliumBlock");
         GameRegistry.registerBlock(NCBlocks.blockHelium, "liquidHeliumBlock");
         fusionPlasma = new FluidPlasma("fusionPlasma");
         FluidRegistry.registerFluid(fusionPlasma);
-        NCBlocks.blockFusionPlasma = new BlockPlasma(
-            fusionPlasma,
-            fusionplasma.setReplaceable(),
-            NuclearCraft.plasmaburn).setCreativeTab(tabNC)
-                .setBlockName("fusionPlasmaBlock");
+        NCBlocks.blockFusionPlasma = new BlockPlasma(fusionPlasma, fusionplasma.setReplaceable(), plasmaburn)
+            .setCreativeTab(tabNC)
+            .setBlockName("fusionPlasmaBlock");
         GameRegistry.registerBlock(NCBlocks.blockFusionPlasma, "fusionPlasmaBlock");
 
         steam = new FluidSteam("steam");
         FluidRegistry.registerFluid(steam);
-        NCBlocks.blockSteam = new BlockSteam(steam, steamMaterial.setReplaceable(), NuclearCraft.steamburn)
-            .setCreativeTab(tabNC)
+        NCBlocks.blockSteam = new BlockSteam(steam, steamMaterial.setReplaceable(), steamburn).setCreativeTab(tabNC)
             .setBlockName("steamBlock");
         GameRegistry.registerBlock(NCBlocks.blockSteam, "steamBlock");
 
         denseSteam = new FluidDenseSteam("denseSteam");
         FluidRegistry.registerFluid(denseSteam);
-        NCBlocks.blockDenseSteam = new BlockDenseSteam(
-            denseSteam,
-            steamMaterial.setReplaceable(),
-            NuclearCraft.steamburn).setCreativeTab(tabNC)
-                .setBlockName("denseSteamBlock");
+        NCBlocks.blockDenseSteam = new BlockDenseSteam(denseSteam, steamMaterial.setReplaceable(), steamburn)
+            .setCreativeTab(tabNC)
+            .setBlockName("denseSteamBlock");
         GameRegistry.registerBlock(NCBlocks.blockDenseSteam, "denseSteamBlock");
 
         superdenseSteam = new FluidSuperdenseSteam("superdenseSteam");
@@ -1219,7 +1218,7 @@ public class NuclearCraft {
         NCBlocks.blockSuperdenseSteam = new BlockSuperdenseSteam(
             superdenseSteam,
             steamMaterial.setReplaceable(),
-            NuclearCraft.steamburn).setCreativeTab(tabNC)
+            steamburn).setCreativeTab(tabNC)
                 .setBlockName("superdenseSteamBlock");
         GameRegistry.registerBlock(NCBlocks.blockSuperdenseSteam, "superdenseSteamBlock");
 
@@ -2016,11 +2015,8 @@ public class NuclearCraft {
             lithiumIonRF,
             (int) Math.ceil(lithiumIonRF / 20),
             "lithiumIonBattery",
-            "A battery capable of storing "
-                + (NuclearCraft.lithiumIonRF >= 1000000 ? NuclearCraft.lithiumIonRF / 1000000 + " M"
-                    : (NuclearCraft.lithiumIonRF >= 1000 ? NuclearCraft.lithiumIonRF / 1000 + " k"
-                        : NuclearCraft.lithiumIonRF + " "))
-                + "RF.");
+            "A battery capable of storing " + (lithiumIonRF >= 1000000 ? lithiumIonRF / 1000000 + " M"
+                : (lithiumIonRF >= 1000 ? lithiumIonRF / 1000 + " k" : lithiumIonRF + " ")) + "RF.");
         GameRegistry.registerItem(NCItems.lithiumIonBattery, "lithiumIonBattery");
 
         // Block Crafting Recipes
